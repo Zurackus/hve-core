@@ -24,3 +24,5 @@
 # to prevent CRLF normalization churn during merges.
 plugins/** linguist-generated=true
 plugins/**/*.md text eol=lf
+
+plugin.json merge=ours
