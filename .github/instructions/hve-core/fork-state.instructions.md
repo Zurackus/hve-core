@@ -79,6 +79,39 @@ git remote add upstream https://github.com/microsoft/hve-core.git
    ```
 
 5. Apply any new in-scope `plugin.json` entries manually and commit to `production`.
+6. Bump the version in `plugin.json` and update the installed plugin — see [Updating the Installed Plugin](#updating-the-installed-plugin).
+
+## Updating the Installed Plugin
+
+VS Code does not automatically pick up pushed changes. After any commit to `production` that modifies `plugin.json`, adds or removes agents/rules/skills, or changes skill content, follow these steps:
+
+**Step 1 — Bump the version in `plugin.json`**
+
+Use [semantic versioning](https://semver.org) relative to the current fork version (not Microsoft's upstream version):
+
+| Change type | Bump |
+|---|---|
+| New skill, agent, or rule added | Minor — e.g. `3.2.3` → `3.3.0` |
+| Skill content or rule updated | Patch — e.g. `3.2.3` → `3.2.4` |
+| Agent or skill removed | Minor |
+| Breaking restructure | Major |
+
+**Step 2 — Commit and push to `production`**
+
+Include the version bump in the same commit as the change.
+
+**Step 3 — Update the plugin in VS Code**
+
+1. Open the Agent Customizations editor (Command Palette → **Chat: Open Customizations**)
+2. Select the **Plugins** tab
+3. Find **hve-core** and open its details
+4. Select **Update** — VS Code re-pulls from `production` and installs the new version
+
+If **Update** is greyed out, the installed version already matches. Confirm the version number in the plugin details matches what was pushed.
+
+**Step 4 — Verify**
+
+Open a fresh chat session, type `/` and confirm new or changed skills appear as expected. If a skill is missing, check that its folder name matches the `name` field in its `SKILL.md` exactly.
 
 ## Fork-specific Artifacts
 

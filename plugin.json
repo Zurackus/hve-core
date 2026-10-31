@@ -1,7 +1,7 @@
 ﻿{
   "name": "hve-core",
   "description": "Opinionated, rapidly evolving HVE Core agentic SDLC patterns and tools",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "author": {
     "name": "Microsoft",
     "url": "https://www.microsoft.com"
