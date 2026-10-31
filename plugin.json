@@ -43,7 +43,6 @@
     ".github/agents/security/security-reviewer.agent.md",
     ".github/agents/security/subagents/codebase-profiler.agent.md"
   ],
-  "commands": [],
   "rules": [
     ".github/instructions/coding-standards/bash/bash.instructions.md",
     ".github/instructions/coding-standards/code-review/diff-computation.instructions.md",
@@ -59,6 +58,7 @@
     ".github/instructions/hve-core/commit-message.instructions.md",
     ".github/instructions/hve-core/copilot-tracking-location.instructions.md",
     ".github/instructions/hve-core/copilot-tracking.instructions.md",
+    ".github/instructions/hve-core/fork-state.instructions.md",
     ".github/instructions/hve-core/git-merge.instructions.md",
     ".github/instructions/hve-core/hve-builder.instructions.md",
     ".github/instructions/hve-core/markdown.instructions.md",
@@ -103,6 +103,7 @@
     ".github/skills/security/secure-by-design",
     ".github/skills/security/security-reviewer-formats",
     ".github/skills/shared/backlog-templates",
+    ".github/skills/hve-core/upstream-sync-review",
     ".github/skills/shared/pr-reference"
   ],
   "extensions": [
