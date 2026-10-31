@@ -1,7 +1,7 @@
 ﻿{
   "name": "hve-core",
   "description": "Opinionated, rapidly evolving HVE Core agentic SDLC patterns and tools",
-  "version": "3.2.3",
+  "version": "3.3.0",
   "author": {
     "name": "Microsoft",
     "url": "https://www.microsoft.com"
@@ -54,6 +54,8 @@
     ".github/instructions/coding-standards/rust/rust-tests.instructions.md",
     ".github/instructions/coding-standards/rust/rust.instructions.md",
     ".github/instructions/coding-standards/typescript/typescript-doc-comments.instructions.md",
+    ".github/instructions/coding-standards/typescript/typescript-tests.instructions.md",
+    ".github/instructions/coding-standards/typescript/typescript.instructions.md",
     ".github/instructions/coding-standards/uv-projects.instructions.md",
     ".github/instructions/hve-core/commit-message.instructions.md",
     ".github/instructions/hve-core/copilot-tracking-location.instructions.md",
