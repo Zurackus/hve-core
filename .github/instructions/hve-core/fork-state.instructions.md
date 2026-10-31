@@ -18,7 +18,7 @@ Never commit fork-specific changes to `main`. The two branches diverge solely at
 
 ## Plugin.json Membership
 
-`plugin.json` is the sole mechanism controlling which agents, rules, skills, and commands activate in Copilot sessions. File presence under `.github/` alone does not activate anything.
+`plugin.json` is the sole mechanism controlling which agents, rules, and skills activate in Copilot sessions. File presence under `.github/` alone does not activate anything.
 
 The file carries `merge=ours` in `.gitattributes`. An upstream `git merge main` never silently overwrites the curated membership; each new upstream entry requires deliberate review.
 
@@ -46,6 +46,14 @@ When a future session adds Astro, CSS, or MDX coding-standard artifacts, registe
 
 ## Upstream Sync Procedure
 
+Before running the sync, confirm the `upstream` remote is configured:
+
+```bash
+git remote get-url upstream
+# If missing:
+git remote add upstream https://github.com/microsoft/hve-core.git
+```
+
 1. Fast-forward `main` to upstream:
 
    ```bash
@@ -61,7 +69,7 @@ When a future session adds Astro, CSS, or MDX coding-standard artifacts, registe
    git diff production..main -- plugin.json
    ```
 
-3. Invoke the `upstream-sync-review` prompt with those outputs. It categorizes each changed file and emits cherry-pick commands for approved items.
+3. Invoke the `/hve-core:upstream-sync-review` skill with those outputs (or `/upstream-sync-review` if working directly in this repo window). It categorizes each changed file and emits cherry-pick commands for approved items.
 
 4. Cherry-pick approved commits to `production`:
 
@@ -71,3 +79,15 @@ When a future session adds Astro, CSS, or MDX coding-standard artifacts, registe
    ```
 
 5. Apply any new in-scope `plugin.json` entries manually and commit to `production`.
+
+## Fork-specific Artifacts
+
+These files exist only in `production` and have no upstream equivalent. They must never be removed during a sync.
+
+| File | Purpose |
+|---|---|
+| `.github/instructions/hve-core/fork-state.instructions.md` | This file. Persistent memory of curation decisions. |
+| `.github/skills/hve-core/upstream-sync-review/SKILL.md` | Skill for reviewing upstream diffs and producing cherry-pick commands. |
+| `.github/prompts/hve-core/upstream-sync-review.prompt.md` | Native prompt version of the sync review; auto-loads in the hve-core workspace window. |
+
+When new fork-specific artifacts are added (e.g. Astro, CSS, MDX coding standards), add them to this table.
